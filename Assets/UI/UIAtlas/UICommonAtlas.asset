@@ -539,8 +539,8 @@ MonoBehaviour:
     y: 625
     width: 152
     height: 28
-    borderLeft: 0
-    borderRight: 0
+    borderLeft: 70
+    borderRight: 70
     borderTop: 0
     borderBottom: 0
     paddingLeft: 0
@@ -552,8 +552,8 @@ MonoBehaviour:
     y: 625
     width: 113
     height: 11
-    borderLeft: 0
-    borderRight: 0
+    borderLeft: 70
+    borderRight: 70
     borderTop: 0
     borderBottom: 0
     paddingLeft: 0

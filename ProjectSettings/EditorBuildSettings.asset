@@ -6,8 +6,14 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/Scene/SceneMap/Scene_Init.unity
+    guid: 6ba6c191b55ee7a4b90db43d9c9fbaef
+  - enabled: 1
     path: Assets/Scene/SceneMap/Scene_LogOn.unity
     guid: 5639be728db721046a8433e893cfec41
+  - enabled: 1
+    path: Assets/Scene/SceneMap/Scene_Loading.unity
+    guid: b7e92dc4e7f2f4244bbb7da4cae1b6b4
   - enabled: 1
     path: Assets/Scene/SceneMap/GameScene_Cunzhuang.unity
     guid: 9fc0d4010bbf28b4594072e72b8655ab

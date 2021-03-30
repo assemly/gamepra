@@ -22,7 +22,8 @@ public class SceneMgr : Singleton<SceneMgr>
     public void LoadLogOn()
     {
         CurrentSceneType = SceneType.LogOn;
-        SceneManager.LoadScene("Scene_LogOn");
+        SceneManager.LoadScene("Scene_Loading");
+        //SceneManager.LoadScene("Scene_LogOn");
     }
     /// <summary>
     /// 去城镇场景
@@ -30,7 +31,8 @@ public class SceneMgr : Singleton<SceneMgr>
     public void LoadToCity()
     {
         CurrentSceneType = SceneType.City;
-        SceneManager.LoadScene("GameScene_Cunzhuang");
-        
+        //SceneManager.LoadScene("GameScene_Cunzhuang");
+        SceneManager.LoadScene("Scene_Loading");
+
     }
 }

@@ -69,6 +69,7 @@
     <Compile Include="Assets\NGUI\Scripts\Interaction\UISavedOption.cs" />
     <Compile Include="Assets\Fingers\Prefab\Script\Gestures\SwipeGestureRecognizer.cs" />
     <Compile Include="Assets\NGUI\Scripts\Interaction\UIScrollBar.cs" />
+    <Compile Include="Assets\Script\UI\SceneUICtrl\UISceneLoadingCtrl.cs" />
     <Compile Include="Assets\Fingers\Demo\ExampleProjects\ExampleScripts\FingersExampleOptionsScript.cs" />
     <Compile Include="Assets\NGUI\Scripts\UI\UITextList.cs" />
     <Compile Include="Assets\Fingers\Demo\Scripts\DemoScriptJoystick.cs" />
@@ -136,7 +137,7 @@
     <Compile Include="Assets\NGUI\Scripts\Tweening\TweenAlpha.cs" />
     <Compile Include="Assets\NGUI\Scripts\Interaction\UIWrapContent.cs" />
     <Compile Include="Assets\NGUI\Examples\Scripts\InventorySystem\Game\UIItemStorage.cs" />
-    <Compile Include="Assets\Script\Common\LogOnSceneCtrl.cs" />
+    <Compile Include="Assets\Script\SceneCtrl\LogOnSceneCtrl.cs" />
     <Compile Include="Assets\NGUI\Scripts\Internal\AnimationOrTween.cs" />
     <Compile Include="Assets\NGUI\Scripts\Interaction\UISlider.cs" />
     <Compile Include="Assets\NGUI\Scripts\UI\UIInputOnGUI.cs" />
@@ -221,6 +222,7 @@
     <Compile Include="Assets\NGUI\Scripts\UI\UITexture.cs" />
     <Compile Include="Assets\NGUI\Scripts\UI\UITooltip.cs" />
     <Compile Include="Assets\NGUI\Scripts\UI\UIFont.cs" />
+    <Compile Include="Assets\Script\UI\WindowUICtrl\LayerUIMgr.cs" />
     <Compile Include="Assets\NGUI\Scripts\Tweening\AnimatedAlpha.cs" />
     <Compile Include="Assets\NGUI\Examples\Scripts\InventorySystem\Game\EquipRandomItem.cs" />
     <Compile Include="Assets\NGUI\Scripts\Internal\BMSymbol.cs" />
@@ -257,6 +259,7 @@
     <Compile Include="Assets\NGUI\Examples\Scripts\Other\Spin.cs" />
     <Compile Include="Assets\NGUI\Scripts\UI\UIViewport.cs" />
     <Compile Include="Assets\Script\Common\GlobalInit.cs" />
+    <Compile Include="Assets\Script\SceneCtrl\LoadingSceneCtrl.cs" />
     <Compile Include="Assets\NGUI\Scripts\Interaction\UIButtonKeys.cs" />
     <Compile Include="Assets\NGUI\Examples\Scripts\Other\PerspectivePixelPerfect.cs" />
     <Compile Include="Assets\Fingers\Prefab\Script\Components\LongPressGestureRecognizerComponentScript.cs" />
@@ -290,7 +293,7 @@
     <Compile Include="Assets\NGUI\Scripts\Internal\NGUIDebug.cs" />
     <Compile Include="Assets\NGUI\Scripts\Tweening\TweenRotation.cs" />
     <Compile Include="Assets\Fingers\Demo\ExampleProjects\ExampleScripts\FingersExampleMainMenuScript.cs" />
-    <Compile Include="Assets\Script\UI\WindowUICtrl\LayerUIMgr.cs" />
+    <Compile Include="Assets\Script\SceneCtrl\InitScenceCtrl.cs" />
   </ItemGroup>
   <ItemGroup>
      <None Include="Assets\Fingers\Demo\ExampleProjects\Resources\FingersExampleTransitionShader.shader" />
