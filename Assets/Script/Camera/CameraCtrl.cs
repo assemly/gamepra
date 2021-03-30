@@ -41,7 +41,7 @@ public class CameraCtrl : MonoBehaviour
     /// <param name="type"></param>
     public void SetCameraRotate(int type)
     {
-        transform.Rotate(0, 20 * Time.deltaTime*(type==0?-1:1), 0);
+        transform.Rotate(0, 40 * Time.deltaTime*(type==0?-1:1), 0);
     }
     /// <summary>
     /// 0 ио 1 об
@@ -49,7 +49,7 @@ public class CameraCtrl : MonoBehaviour
     /// <param name="type"></param>
     public void SetCameraUpAndDown(int type)
     {
-        m_CameraUpAndDown.transform.Rotate(15 * Time.deltaTime * (type == 0 ? -1 : 1), 0, 0);
+        m_CameraUpAndDown.transform.Rotate(30 * Time.deltaTime * (type == 0 ? -1 : 1), 0, 0);
         m_CameraUpAndDown.transform.localEulerAngles = new Vector3(Mathf.Clamp(m_CameraUpAndDown.transform.localEulerAngles.x, 35f, 80f), 0, 0);
     }
     /// <summary>
@@ -59,7 +59,7 @@ public class CameraCtrl : MonoBehaviour
     public  void SetCameraZoom(int type)
     {
         //m_CameraContainer.transform.TransformPoint(0, 0, m_CameraContainer.transform.position.z+ 10 * Time.deltaTime * (type == 0 ? -1 : 1));
-        m_CameraContainer.Translate(Vector3.forward * 10 * Time.deltaTime * (type == 0 ? -1 : 1));
+        m_CameraContainer.Translate(Vector3.forward * 30 * Time.deltaTime * (type == 0 ? -1 : 1));
         m_CameraContainer.localPosition = new Vector3(0, 0, Mathf.Clamp(m_CameraContainer.localPosition.z,-5,5));
     }
 

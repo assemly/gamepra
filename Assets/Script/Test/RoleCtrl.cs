@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -26,10 +27,71 @@ public class RoleCtrl : MonoBehaviour
             CameraCtrl.Instance.Init();
         }
 
+        EasyTouchEvent.Instance.OnSwip += OnSwip;
+        EasyTouchEvent.Instance.OnPlayerClickGround += OnPlayerClickGround;
+        EasyTouchEvent.Instance.OnZoom += OnZoom;
     }
 
-    // Update is called once per frame
-    void Update()
+    private void OnZoom(EasyTouchEvent.ZoomType obj)
+    {
+        switch (obj)
+        {
+            case EasyTouchEvent.ZoomType.In:
+                CameraCtrl.Instance.SetCameraZoom(0);
+                break;
+            case EasyTouchEvent.ZoomType.Out:
+                CameraCtrl.Instance.SetCameraZoom(1);
+                break;
+
+        }
+    }
+
+    private void OnPlayerClickGround()
+    {
+        //Debug.Log("Test");
+        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+
+        RaycastHit hitInfo;
+        if (Physics.Raycast(ray, out hitInfo))
+        {
+            if (hitInfo.collider.gameObject.name.Equals("Ground", System.StringComparison.InvariantCultureIgnoreCase))
+            {
+                m_TargetPos = hitInfo.point;
+                //m_Rotationover = false;
+                m_RotationSpeed = 0;
+            }
+        }
+    }
+
+    private void OnSwip(EasyTouchEvent.FingerDir obj)
+    {
+        switch (obj)
+        {
+            case EasyTouchEvent.FingerDir.Left:
+                CameraCtrl.Instance.SetCameraRotate(0);
+                break;
+            case EasyTouchEvent.FingerDir.Right:
+                CameraCtrl.Instance.SetCameraRotate(1);
+                break;
+            case EasyTouchEvent.FingerDir.Up:
+                CameraCtrl.Instance.SetCameraUpAndDown(0);
+                break;
+            case EasyTouchEvent.FingerDir.Down:
+                CameraCtrl.Instance.SetCameraUpAndDown(1);
+                break;
+        }
+    }
+
+    private void OnDestroy()
+    {
+        EasyTouchEvent.Instance.OnSwip -= OnSwip;
+        EasyTouchEvent.Instance.OnPlayerClickGround -= OnPlayerClickGround;
+        EasyTouchEvent.Instance.OnZoom -= OnZoom;
+    }
+
+
+// Update is called once per frame
+    private void Update()
     {
         /*
         if (Input.GetMouseButtonUp(0))
@@ -47,23 +109,7 @@ public class RoleCtrl : MonoBehaviour
         return;
         */
         if (m_CharacterController == null) return;
-        if (Input.GetMouseButtonUp(0) || Input.touchCount == 1)
-        {
-            //Debug.Log("Test");
-            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-
-            RaycastHit hitInfo;
-            if (Physics.Raycast(ray,out hitInfo))
-            {
-                if(hitInfo.collider.gameObject.name.Equals("Ground",System.StringComparison.InvariantCultureIgnoreCase))
-                {
-                    m_TargetPos = hitInfo.point;
-                    //m_Rotationover = false;
-                    m_RotationSpeed = 0;
-                }
-            }
-
-        }
+     
      if (!m_CharacterController.isGrounded)
         {
             m_CharacterController.Move((transform.position + new Vector3(0, -1000, 0)) - transform.position);
@@ -152,11 +198,11 @@ public class RoleCtrl : MonoBehaviour
         }
         else if (Input.GetKey(KeyCode.W))
         {
-            CameraCtrl.Instance.SetCameraUpAndDown(1);
+            CameraCtrl.Instance.SetCameraUpAndDown(0);
         }
         else if (Input.GetKey(KeyCode.S))
         {
-            CameraCtrl.Instance.SetCameraUpAndDown(0);
+            CameraCtrl.Instance.SetCameraUpAndDown(1);
         }
         else if (Input.GetKey(KeyCode.I))
         {
