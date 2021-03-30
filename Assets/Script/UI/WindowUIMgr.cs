@@ -7,7 +7,17 @@ using UnityEngine;
 /// </summary>
 public class WindowUIMgr : Singleton<WindowUIMgr>
 {
+    //字典存储
     private Dictionary<WindowUIType, UIWindowBase> m_DicWindow = new Dictionary<WindowUIType, UIWindowBase>();
+
+    //已打开窗口的数量
+    public int OpenWindowCount
+    {
+        get
+        {
+            return m_DicWindow.Count;
+        }
+    }
 
     #region OpenWindow 打开窗口
     /// <summary>
@@ -17,41 +27,59 @@ public class WindowUIMgr : Singleton<WindowUIMgr>
     /// <returns></returns>  //, WindowUIContainerType containerType = WindowUIContainerType.Center, WindowShowStyle showStyle = WindowShowStyle.Normal, bool cache = true
     public GameObject OpenWindow(WindowUIType type)
     {
-        if (m_DicWindow.ContainsKey(type)) return null;
         if (type == WindowUIType.None) return null;
         GameObject obj = null;
 
-        //这样可以避免窗口过多switch太多 枚举的名称和预设对应
-        obj = ResourcesMgr.Instance.Load(ResourcesMgr.ResourceType.UIWindow,string.Format("pan{0}",type.ToString()), cache:true);
-        if (obj == null) return null;
-
-        UIWindowBase windowBase = obj.GetComponent<UIWindowBase>();
-        if (windowBase == null) return null;
-
-        m_DicWindow.Add(type, windowBase);
-        windowBase.CurrentUIType = type;
-        //switch (type)
-        //{
-        //    case WindowUIType.LogOn:
-        //        obj = ResourcesMgr.Instance.Load(ResourcesMgr.ResourceType.UIWindow, "panLogOn", cache);
-        //        break;
-        //    case WindowUIType.Reg:
-        //        obj = ResourcesMgr.Instance.Load(ResourcesMgr.ResourceType.UIWindow, "panReg", cache);
-        //        break;
-
-        //}
-        Transform transParent = null;
-        switch (windowBase.containerType)
+        //如果窗口不存在 则
+        if (!m_DicWindow.ContainsKey(type))
         {
-            case WindowUIContainerType.Center:
-                transParent = SceneUIMgr.Instance.CurrentUIScene.Container_Center;
-                break;
+            //这样可以避免窗口过多switch太多 枚举的名称和预设对应
+            obj = ResourcesMgr.Instance.Load(ResourcesMgr.ResourceType.UIWindow, string.Format("pan{0}", type.ToString()), cache: true);
+            if (obj == null) return null;
+
+            UIWindowBase windowBase = obj.GetComponent<UIWindowBase>();
+            if (windowBase == null) return null;
+
+            m_DicWindow.Add(type, windowBase);
+
+            windowBase.CurrentUIType = type;
+            //switch (type)
+            //{
+            //    case WindowUIType.LogOn:
+            //        obj = ResourcesMgr.Instance.Load(ResourcesMgr.ResourceType.UIWindow, "panLogOn", cache);
+            //        break;
+            //    case WindowUIType.Reg:
+            //        obj = ResourcesMgr.Instance.Load(ResourcesMgr.ResourceType.UIWindow, "panReg", cache);
+            //        break;
+
+            //}
+            Transform transParent = null;
+            switch (windowBase.containerType)
+            {
+                case WindowUIContainerType.Center:
+                    transParent = SceneUIMgr.Instance.CurrentUIScene.Container_Center;
+                    break;
+            }
+            obj.transform.parent = transParent;
+            obj.transform.localPosition = Vector3.zero;
+            obj.transform.localScale = Vector3.one;
+            NGUITools.SetActive(obj, false);
+            StartShowWindow(windowBase, true);
         }
-        obj.transform.parent = transParent;
-        obj.transform.localPosition = Vector3.zero;
-        obj.transform.localScale = Vector3.one;
-        NGUITools.SetActive(obj, false);
-        StartShowWindow(windowBase, true);
+        else
+        {
+            obj = m_DicWindow[type].gameObject;
+        }
+       
+          
+
+        
+
+        //层级管理
+        LayerUIMgr.Instance.SetLayer(obj);
+
+        
+        
         return obj;
     }
     #endregion
@@ -184,7 +212,8 @@ public class WindowUIMgr : Singleton<WindowUIMgr>
     /// 
     private void DestoryWindow(UIWindowBase windowBase)
     {
-        Object.Destroy(windowBase.gameObject);
         m_DicWindow.Remove(windowBase.CurrentUIType);
+        Object.Destroy(windowBase.gameObject);
+        
     }
 }

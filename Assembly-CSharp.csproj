@@ -250,11 +250,13 @@
     <Compile Include="Assets\Fingers\Prefab\Script\Gestures\ScaleGestureRecognizer.cs" />
     <Compile Include="Assets\NGUI\Examples\Scripts\InventorySystem\System\InvStat.cs" />
     <Compile Include="Assets\Script\Test\BoxCtrl.cs" />
+    <Compile Include="Assets\Script\Common\Finger.cs" />
     <Compile Include="Assets\Fingers\Prefab\Script\Components\FingersPanOrbitComponentScript.cs" />
     <Compile Include="Assets\NGUI\Scripts\UI\UIInput.cs" />
     <Compile Include="Assets\Fingers\Prefab\Script\Components\FingersRotateCameraComponentScript.cs" />
     <Compile Include="Assets\NGUI\Examples\Scripts\Other\Spin.cs" />
     <Compile Include="Assets\NGUI\Scripts\UI\UIViewport.cs" />
+    <Compile Include="Assets\Script\Common\GlobalInit.cs" />
     <Compile Include="Assets\NGUI\Scripts\Interaction\UIButtonKeys.cs" />
     <Compile Include="Assets\NGUI\Examples\Scripts\Other\PerspectivePixelPerfect.cs" />
     <Compile Include="Assets\Fingers\Prefab\Script\Components\LongPressGestureRecognizerComponentScript.cs" />
@@ -288,8 +290,7 @@
     <Compile Include="Assets\NGUI\Scripts\Internal\NGUIDebug.cs" />
     <Compile Include="Assets\NGUI\Scripts\Tweening\TweenRotation.cs" />
     <Compile Include="Assets\Fingers\Demo\ExampleProjects\ExampleScripts\FingersExampleMainMenuScript.cs" />
-    <Compile Include="Assets\Script\Common\Finger.cs" />
-    <Compile Include="Assets\Script\Common\GlobalInit.cs" />
+    <Compile Include="Assets\Script\UI\WindowUICtrl\LayerUIMgr.cs" />
   </ItemGroup>
   <ItemGroup>
      <None Include="Assets\Fingers\Demo\ExampleProjects\Resources\FingersExampleTransitionShader.shader" />

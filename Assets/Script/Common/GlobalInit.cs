@@ -4,6 +4,17 @@ using UnityEngine;
 
 public class GlobalInit : MonoBehaviour
 {
+    #region ≥£¡ø
+    /// <summary>
+    /// Í«≥∆Key
+    /// </summary>
+    public const string MMO_NICKNAME = "MMO_NICKNAME";
+    /// <summary>
+    /// √‹¬Îkey
+    /// </summary>
+    public const string MMO_PWD = "MMO_PWD";
+    #endregion
+
     public static GlobalInit Instance;
 
     /// <summary>

@@ -30,4 +30,26 @@ public class UIWindowBase : UIBase
     public WindowUIType CurrentUIType;
 
     protected WindowUIType m_NextOpenWindow = WindowUIType.None;
+
+    /// <summary>
+    /// 关闭窗口
+    /// </summary>
+    protected virtual void Close()
+    {
+        WindowUIMgr.Instance.CloseWindow(CurrentUIType);
+    }
+
+    /// <summary>
+    /// 销毁前转窗口
+    /// </summary>
+    protected override void BeforeOnDestroy()
+    {
+        LayerUIMgr.Instance.CheckOpenWindow();
+        if (m_NextOpenWindow == WindowUIType.None) return;
+        WindowUIMgr.Instance.OpenWindow(m_NextOpenWindow);
+        //if(m_NextOpenWindow == WindowUIType.Reg)
+        //{ 
+        //    WindowUIMgr.Instance.OpenWindow(WindowUIType.Reg);
+        //}
+    }
 }
